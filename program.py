@@ -141,18 +141,18 @@ def main():
     resolution = "360p"
     file_format = "mp4"
 
-    #video_name = download_yt_video(url, folder, resolution, file_format)
-    video_name = "I LAUGHED WAY TOO MUCH"
+    video_name = download_yt_video(url, folder, resolution, file_format)
+    #video_name = "I LAUGHED WAY TOO MUCH"
 
     video_path = folder + "/" + video_name + "." + file_format
 
-    #play_video(video_path)
+    play_video(video_path)
 
     #analyze_video(video_path)
 
     #play_codes(video_path)
 
-    play_sound(video_path)
+    #play_sound(video_path)
 
 
 if __name__ == "__main__":
