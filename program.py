@@ -1,5 +1,6 @@
 from ffpyplayer.player import MediaPlayer
 from pytube import YouTube
+import upload_event
 import numpy as np
 import math
 import cv2
@@ -141,16 +142,16 @@ def main():
     resolution = "360p"
     file_format = "mp4"
 
-    video_name = download_yt_video(url, folder, resolution, file_format)
-    #video_name = "I LAUGHED WAY TOO MUCH"
+    #video_name = download_yt_video(url, folder, resolution, file_format)
+    video_name = "I LAUGHED WAY TOO MUCH"
 
     video_path = folder + "/" + video_name + "." + file_format
 
-    play_video(video_path)
+    #play_video(video_path)
 
     #analyze_video(video_path)
 
-    #play_codes(video_path)
+    play_codes(video_path)
 
     #play_sound(video_path)
 
