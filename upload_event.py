@@ -63,7 +63,7 @@ def check_upload_event(channel):
 
             return latest_video_url
 
-        #print(latest_video_name)
+        print(latest_video_name)
         time_diff = str(round(time.time() - last, 2))
         last = time.time()
 
@@ -76,7 +76,9 @@ def check_upload_event(channel):
 
 
 def main():
-    channel_URL = "https://www.youtube.com/user/KSIOlajidebtHD"
+    channel_URL = "https://www.youtube.com/user/KSIOlajidebtHD" # KSI
+
+    channel_URL = "https://www.youtube.com/channel/UCt-PBc48GgrNP57gZLMXtuw" # min kanal
 
     latest_video = check_upload_event(channel_URL)
 
