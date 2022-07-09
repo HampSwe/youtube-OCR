@@ -7,6 +7,11 @@ def analyze_frame(frame):
     gray = True
     black_and_white = False
 
+    # Spinna?
+    # Högre upplösning
+    # "Glid" threshold
+    # Prova svart färg
+
     if gray:
         grayImage = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, threshold, 255, cv2.THRESH_BINARY)

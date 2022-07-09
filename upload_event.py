@@ -20,11 +20,13 @@ accept_cookies_xpath = '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]
 def check_upload_event(channel):
     
     chrome_options = Options()
-    chrome_options.headless = True
+    chrome_options.headless = False
     chrome_options.add_argument('log-level=3')
     driver = webdriver.Chrome(options=chrome_options, executable_path=chrome_driver_path)
 
     driver.get(channel)
+
+    time.sleep(30)
 
     accept_cookies = driver.find_element(By.XPATH, accept_cookies_xpath)
     accept_cookies.click()

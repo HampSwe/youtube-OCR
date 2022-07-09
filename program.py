@@ -83,11 +83,15 @@ def analyze_codes(path):
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     duration = round(frames / fps)
 
-    timestamps_A = [(2903, 2922), (4752, 4770), (5899, 5918), (7927, 7945), (8430, 8448), (9693, 9711),
+    timestamps_650 = [(2903, 2922), (4752, 4770), (5899, 5918), (7927, 7945), (8430, 8448), (9693, 9711),
     (11952, 11971), (13302, 13321), (16442, 16461), (16672, 16691), (20049, 20067),
     (22180, 22200), (22440, 22459), (25262, 25281), (27256, 27275), (30801, 30820)]
+
+    timestamps_500 = []
+
+    timestamps = timestamps_650
  
-    for code_interval in timestamps_A:
+    for code_interval in timestamps:
         for frame_number in range(code_interval[0], code_interval[1] + 1):
             cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
             returned, frame = cap.read()
@@ -169,7 +173,10 @@ def analyze_video(path):
 
 def main():
 
-    url = "https://www.youtube.com/watch?v=NBXcEO6t2Ok"
+    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok"
+    url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM"
+
+    url = url_650
     folder = "./videos"
     resolution = "360p"
     file_format = "mp4"
