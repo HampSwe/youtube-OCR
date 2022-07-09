@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import cv2
 import time
+import send_call
 
 
 chrome_driver_path = "C:\\Users\\Hampus\\Documents\\chromedriver_103\\chromedriver.exe"
@@ -81,6 +82,8 @@ def main():
     channel_URL = "https://www.youtube.com/channel/UCt-PBc48GgrNP57gZLMXtuw" # min kanal
 
     latest_video = check_upload_event(channel_URL)
+
+    send_call.call()
 
 
 if __name__ == "__main__":
