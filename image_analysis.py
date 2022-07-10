@@ -1,6 +1,7 @@
 import cv2
 import pytesseract
 import numpy as np
+import time
 
 def rotate_image_crop(image, angle):
   image_center = tuple(np.array(image.shape[1::-1]) / 2)
@@ -38,11 +39,13 @@ def rotate_image(mat, angle):
 
 def analyze_frame(frame, angle=0):
 
-    threshold = 200
+    # att visa bild funkar typ bara om man också "pausar" med bokstaven "n" (typ)
+
+    threshold = 210
     gray = True
-    black_and_white = False
-    #angle = -26
-    angle = 0
+    black_and_white = True
+    angle = -5
+    #angle = 0
 
     # Spinna?
     # Högre upplösning
@@ -54,9 +57,9 @@ def analyze_frame(frame, angle=0):
 
         #grayImage = frame
 
-        #(thresh, blackAndWhiteImage) = cv2.threshold(grayImage, threshold, 255, cv2.THRESH_BINARY)
+        (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, threshold, 255, cv2.THRESH_BINARY)
 
-        blackAndWhiteImage = grayImage
+        #blackAndWhiteImage = grayImage
 
 
         if black_and_white:
@@ -91,10 +94,10 @@ def analyze_frame(frame, angle=0):
 
 
         else:
-            #img = rotate_image(grayImage, angle)
-            img = grayImage
+            img = rotate_image(grayImage, angle)
+            #img = grayImage
 
-            #cv2.imshow('Gray', img)
+            cv2.imshow('Gray', img)
             text = pytesseract.image_to_string(img)
 
             print(text)

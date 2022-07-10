@@ -74,6 +74,8 @@ def calc_frame(minutes, seconds):
 
 
 def play_codes(path):
+    multiplier = 0.5
+
     cap = cv2.VideoCapture(path)
 
     frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -91,13 +93,13 @@ def play_codes(path):
     timestamps = timestamps_500
  
     for code_interval in timestamps:
-        for frame_number in range(code_interval[0], code_interval[1] + 1):
-            cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+        for frame_number in range(math.ceil(code_interval[0] * multiplier), math.floor(code_interval[1] * multiplier) + 1):
+            cap.set(cv2.CAP_PROP_POS_FRAMES, round(frame_number))
             returned, frame = cap.read()
 
             if returned:
                 cv2.imshow('Frame', frame)
-                print(frame_number)
+                print(round(frame_number))
 
                 # Press N on keyboard to go to next frame
                 while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
@@ -245,10 +247,10 @@ def analyze_codes_rotated(path):
     cap.release()
     cv2.destroyAllWindows()
 
-def analyze_time_codes(path):
+def analyze_time_codes(path, multiplier=1):
     t1 = time.time()
 
-    divider = 2
+    #multiplier = 0.5
 
     cap = cv2.VideoCapture(path)
 
@@ -263,25 +265,24 @@ def analyze_time_codes(path):
     timestamps_500 = [(13183, 13275), (15233, 15325), (16979, 17071), (18707, 18797), (20695, 20785),
     (27618, 27709), (37476, 37566), (41171, 41262), (44290, 44380)]
 
-    timestamps = timestamps_500
+    selected_timestamp = [timestamps_650[4]]
+
+    timestamps = selected_timestamp
  
     for code_interval in timestamps:
-        for frame_number in range(math.ceil(code_interval[0] / 2), math.floor(code_interval[1] / 2) + 1):
+        for frame_number in range(math.ceil(code_interval[0] * multiplier), math.floor(code_interval[1] * multiplier) + 1):
             cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
             returned, frame = cap.read()
 
             if returned:
+                #print(frame_number)'
                 #cv2.imshow('Frame', frame)
-                #print(frame_number)
 
                 image_analysis.analyze_frame(frame)
 
                 # # Press N on keyboard to go to next frame
-                # while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
-                #     pass
-
-                
-                #input()
+                while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
+                    pass
 
     total_time = time.time() - t1
     print(total_time)
@@ -349,9 +350,9 @@ def main():
     url_smile = "https://www.youtube.com/watch?v=4_TyhOeTWyQ&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=14" #claim code först
     url_first = "https://www.youtube.com/watch?v=L69Wt-5d8rE&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=16" #claim code först
 
-    url = url_500
+    url = url_650
     folder = "./videos"
-    resolution = "720p"
+    resolution = "1080p"
     file_format = "mp4"
 
     video_name = download_yt_video(url, folder, resolution, file_format)
@@ -374,7 +375,7 @@ def main():
 
     #analyze_codes_rotated(video_path)
 
-    analyze_time_codes(video_path)
+    analyze_time_codes(video_path, multiplier=2)
 
 
 if __name__ == "__main__":
