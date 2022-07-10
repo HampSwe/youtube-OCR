@@ -19,3 +19,5 @@ analysera olika rum resp. tetxfärg
 timestamps A är fel när man kör max. kanske bara dubbla framesen?
 
 gå baklänges i videon
+
+jämför hastighets-boost genom att t.ex. ta bort grey-scale med hur många koder den sätter
