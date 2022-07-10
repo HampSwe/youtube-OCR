@@ -41,7 +41,7 @@ def analyze_frame(frame, angle=0):
 
     # att visa bild funkar typ bara om man också "pausar" med bokstaven "n" (typ)
 
-    threshold = 210
+    threshold = 215
     gray = True
     black_and_white = True
     angle = -5
