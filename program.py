@@ -29,7 +29,7 @@ def download_yt_video(url, path, resolution, file_format):
         # for i in yt.streams:
         #     print(i.resolution)
 
-        mp4_files = yt.streams.filter(file_extension=file_format, res="1080p")   
+        mp4_files = yt.streams.filter(file_extension=file_format, res=resolution)   
         #mp4_360p_files = mp4_files.get_by_resolution(resolution)
         mp4_files.first().download(path)
         return yt.title
@@ -269,7 +269,7 @@ def analyze_video(path):
 
 def filter_name(name):
     tmp = ""
-    filter = ["$"]
+    filter = ["$", ","]
 
     for i in name:
         if not i in filter:
@@ -280,12 +280,17 @@ def filter_name(name):
 
 def main():
 
-    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok"
+    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok" #vriden text + stjärna
     url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM"
+    url_400 = "https://www.youtube.com/watch?v=Brje__8Xvmk&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=5"
+    url_broke = "https://www.youtube.com/watch?v=fNQe3ClfujU&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=9"
+    url_300 = "https://www.youtube.com/watch?v=BeJ1rnFJHfI&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=11" #typ omöjliga att läsa av. DOCK: konstig bugg, kan ej ladda ner
+    url_smile = "https://www.youtube.com/watch?v=4_TyhOeTWyQ&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=14" #claim code först
+    url_first = "https://www.youtube.com/watch?v=L69Wt-5d8rE&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=16" #claim code först
 
     url = url_500
     folder = "./videos"
-    resolution = "360p"
+    resolution = "1080p"
     file_format = "mp4"
 
     video_name = download_yt_video(url, folder, resolution, file_format)

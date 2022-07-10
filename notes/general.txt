@@ -6,3 +6,7 @@ hitta skratt?
 
 
 LÄGG TILL SLEEP MELLAN VARJE REFRESH, LITE SLUMP OCKSÅ!
+
+
+detektera eventuellt "claim code: "
+detektera stjärna
