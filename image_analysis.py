@@ -2,6 +2,12 @@ import cv2
 import pytesseract
 import numpy as np
 
+def rotate_image_crop(image, angle):
+  image_center = tuple(np.array(image.shape[1::-1]) / 2)
+  rot_mat = cv2.getRotationMatrix2D(image_center, angle, 1.0)
+  result = cv2.warpAffine(image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR)
+  return result
+
 def rotate_image(mat, angle):
     """
     Rotates an image (angle in degrees) and expands image to avoid cropping
@@ -59,12 +65,20 @@ def analyze_frame(frame, angle=0):
             img = cv2.medianBlur(img, 1)
 
             # cv2.imwrite("test_images/test.png", img)
-            # img = cv2.imread("test_images/entire.png")
+            img = cv2.imread("test_images/entire.png")
+            #img = rotate_image_crop(img, -10)
 
             cv2.imshow('BlackAndWhite', img)
             text = pytesseract.image_to_string(img)
 
             print(text)
+
+
+            # Rotera texten rätt! https://pyimagesearch.com/2022/01/31/correcting-text-orientation-with-tesseract-and-python/
+            
+            # Prova och träna på rotated2.png, se om du kan få den att funka med filtrering
+
+
 
         else:
             img = rotate_image(grayImage, angle)

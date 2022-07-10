@@ -249,25 +249,38 @@ def analyze_video(path):
     cap.release()
     cv2.destroyAllWindows()
 
+def filter_name(name):
+    tmp = ""
+    filter = ["$"]
+
+    for i in name:
+        if not i in filter:
+            tmp += i
+    
+    return tmp
+
 
 def main():
 
     url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok"
     url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM"
 
-    url = url_650
+    url = url_500
     folder = "./videos"
     resolution = "360p"
     file_format = "mp4"
 
     #video_name = download_yt_video(url, folder, resolution, file_format)
-    video_name = "I LAUGHED WAY TOO MUCH"
+    #video_name = filter_name(video_name)
+
+    #video_name = "I LAUGHED WAY TOO MUCH"
+    video_name = "500 EVERYTIME I LAUGH"
 
     video_path = folder + "/" + video_name + "." + file_format
 
     #play_video(video_path)
 
-    #analyze_video(video_path)
+    analyze_video(video_path)
 
     #play_codes(video_path)
 
@@ -275,7 +288,7 @@ def main():
 
     #analyze_codes(video_path)
 
-    analyze_codes_rotated(video_path)
+    #analyze_codes_rotated(video_path)
 
 
 if __name__ == "__main__":
