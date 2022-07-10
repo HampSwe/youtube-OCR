@@ -58,8 +58,15 @@ def play_video(path):
 
 
 def calc_frame(minutes, seconds):
-    length = 1183.0
-    frames = 35476.0
+    # 650
+    #length = 1183.0
+    #frames = 35476.0
+
+    #500
+    length = 788
+    frames = 47252
+
+
     ratio = (60.0 * float(minutes) + float(seconds)) / length
     print(math.floor(frames * ratio))
 
@@ -76,9 +83,11 @@ def play_codes(path):
     (11952, 11971), (13302, 13321), (16442, 16461), (16672, 16691), (20049, 20067),
     (22180, 22200), (22440, 22459), (25262, 25281), (27256, 27275), (30801, 30820)]
 
-    timestamps_500 = []
+    timestamps_500 = [(13183, 13275), (15233, 15325), (16979, 17071), (18707, 18797), (20695, 20785),
+    (27618, 27709), (37476, 37566), (41171, 41262), (44290, 44380)]
 
-    timestamps = timestamps_650
+
+    timestamps = timestamps_500
  
     for code_interval in timestamps:
         for frame_number in range(code_interval[0], code_interval[1] + 1):
@@ -109,9 +118,10 @@ def analyze_codes(path):
     (11952, 11971), (13302, 13321), (16442, 16461), (16672, 16691), (20049, 20067),
     (22180, 22200), (22440, 22459), (25262, 25281), (27256, 27275), (30801, 30820)]
 
-    timestamps_500 = []
+    timestamps_500 = [(13183, 13275), (15233, 15325), (16979, 17071), (18707, 18797), (20695, 20785),
+    (27618, 27709), (37476, 37566), (41171, 41262), (44290, 44380)]
 
-    timestamps = timestamps_650
+    timestamps = timestamps_500
  
     for code_interval in timestamps:
         for frame_number in range(code_interval[0], code_interval[1] + 1):
@@ -202,7 +212,8 @@ def analyze_codes_rotated(path):
     (11952, 11971), (13302, 13321), (16442, 16461), (16672, 16691), (20049, 20067),
     (22180, 22200), (22440, 22459), (25262, 25281), (27256, 27275), (30801, 30820)]
 
-    timestamps_500 = []
+    timestamps_500 = [(13183, 13275), (15233, 15325), (16979, 17071), (18707, 18797), (20695, 20785),
+    (27618, 27709), (37476, 37566), (41171, 41262), (44290, 44380)]
 
     timestamps_selected = [(11952, 11971)]
 
@@ -280,11 +291,11 @@ def filter_name(name):
 
 def main():
 
-    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok" #vriden text + stjärna
-    url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM"
-    url_400 = "https://www.youtube.com/watch?v=Brje__8Xvmk&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=5"
-    url_broke = "https://www.youtube.com/watch?v=fNQe3ClfujU&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=9"
-    url_300 = "https://www.youtube.com/watch?v=BeJ1rnFJHfI&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=11" #typ omöjliga att läsa av. DOCK: konstig bugg, kan ej ladda ner
+    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok" #vriden text + stjärna. vit text
+    url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM" #svart text, enkel
+    url_400 = "https://www.youtube.com/watch?v=Brje__8Xvmk&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=5" #svart text, enkel
+    url_broke = "https://www.youtube.com/watch?v=fNQe3ClfujU&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=9" #vit text, enkel
+    url_300 = "https://www.youtube.com/watch?v=BeJ1rnFJHfI&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=11" #typ omöjliga att läsa av. DOCK: konstig bugg, kan ej ladda ner. tror svart text
     url_smile = "https://www.youtube.com/watch?v=4_TyhOeTWyQ&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=14" #claim code först
     url_first = "https://www.youtube.com/watch?v=L69Wt-5d8rE&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=16" #claim code först
 
@@ -293,23 +304,23 @@ def main():
     resolution = "1080p"
     file_format = "mp4"
 
-    video_name = download_yt_video(url, folder, resolution, file_format)
-    video_name = filter_name(video_name)
+    #video_name = download_yt_video(url, folder, resolution, file_format)
+    #video_name = filter_name(video_name)
 
     #video_name = "I LAUGHED WAY TOO MUCH"
-    #video_name = "500 EVERYTIME I LAUGH"
+    video_name = "500 EVERYTIME I LAUGH"
 
     video_path = folder + "/" + video_name + "." + file_format
 
     #play_video(video_path)
 
-    analyze_video(video_path)
+    #analyze_video(video_path)
 
     #play_codes(video_path)
 
     #play_sound(video_path)
 
-    #analyze_codes(video_path)
+    analyze_codes(video_path)
 
     #analyze_codes_rotated(video_path)
 

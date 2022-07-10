@@ -10,3 +10,12 @@ LÄGG TILL SLEEP MELLAN VARJE REFRESH, LITE SLUMP OCKSÅ!
 
 detektera eventuellt "claim code: "
 detektera stjärna
+
+
+de är olika fps, tänk på hur många frames som ska hoppa
+
+analysera olika rum resp. tetxfärg
+
+timestamps A är fel när man kör max. kanske bara dubbla framesen?
+
+gå baklänges i videon
