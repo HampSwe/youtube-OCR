@@ -1,1 +1,8 @@
 Verkar uppdatera en gång var 10:e dag ungefär
+
+hoppa in typ 1min i början
+
+hitta skratt?
+
+
+LÄGG TILL SLEEP MELLAN VARJE REFRESH, LITE SLUMP OCKSÅ!
