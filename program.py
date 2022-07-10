@@ -6,6 +6,7 @@ import upload_event
 import numpy as np
 import math
 import cv2
+import time
 
 
 def download_yt_video(url, path, resolution, file_format):
@@ -134,9 +135,14 @@ def analyze_codes(path):
 
                 image_analysis.analyze_frame(frame)
 
-                # Press N on keyboard to go to next frame
-                while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
-                    pass
+                # # Press N on keyboard to go to next frame
+                # while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
+                #     pass
+
+                
+                input()
+
+
 
     cap.release()
     cv2.destroyAllWindows()
@@ -239,6 +245,50 @@ def analyze_codes_rotated(path):
     cap.release()
     cv2.destroyAllWindows()
 
+def analyze_time_codes(path):
+    t1 = time.time()
+
+    divider = 2
+
+    cap = cv2.VideoCapture(path)
+
+    frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    duration = round(frames / fps)
+
+    timestamps_650 = [(2903, 2922), (4752, 4770), (5899, 5918), (7927, 7945), (8430, 8448), (9693, 9711),
+    (11952, 11971), (13302, 13321), (16442, 16461), (16672, 16691), (20049, 20067),
+    (22180, 22200), (22440, 22459), (25262, 25281), (27256, 27275), (30801, 30820)]
+
+    timestamps_500 = [(13183, 13275), (15233, 15325), (16979, 17071), (18707, 18797), (20695, 20785),
+    (27618, 27709), (37476, 37566), (41171, 41262), (44290, 44380)]
+
+    timestamps = timestamps_500
+ 
+    for code_interval in timestamps:
+        for frame_number in range(math.ceil(code_interval[0] / 2), math.floor(code_interval[1] / 2) + 1):
+            cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+            returned, frame = cap.read()
+
+            if returned:
+                #cv2.imshow('Frame', frame)
+                #print(frame_number)
+
+                image_analysis.analyze_frame(frame)
+
+                # # Press N on keyboard to go to next frame
+                # while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
+                #     pass
+
+                
+                #input()
+
+    total_time = time.time() - t1
+    print(total_time)
+
+    cap.release()
+    cv2.destroyAllWindows()
+
 
 
 def analyze_video(path):
@@ -301,14 +351,14 @@ def main():
 
     url = url_500
     folder = "./videos"
-    resolution = "1080p"
+    resolution = "720p"
     file_format = "mp4"
 
-    #video_name = download_yt_video(url, folder, resolution, file_format)
-    #video_name = filter_name(video_name)
+    video_name = download_yt_video(url, folder, resolution, file_format)
+    video_name = filter_name(video_name)
 
     #video_name = "I LAUGHED WAY TOO MUCH"
-    video_name = "500 EVERYTIME I LAUGH"
+    #video_name = "500 EVERYTIME I LAUGH"
 
     video_path = folder + "/" + video_name + "." + file_format
 
@@ -320,9 +370,11 @@ def main():
 
     #play_sound(video_path)
 
-    analyze_codes(video_path)
+    #analyze_codes(video_path)
 
     #analyze_codes_rotated(video_path)
+
+    analyze_time_codes(video_path)
 
 
 if __name__ == "__main__":

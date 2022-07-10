@@ -40,8 +40,9 @@ def analyze_frame(frame, angle=0):
 
     threshold = 200
     gray = True
-    black_and_white = True
-    angle = -26
+    black_and_white = False
+    #angle = -26
+    angle = 0
 
     # Spinna?
     # Högre upplösning
@@ -50,10 +51,19 @@ def analyze_frame(frame, angle=0):
 
     if gray:
         grayImage = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, threshold, 255, cv2.THRESH_BINARY)
+
+        #grayImage = frame
+
+        #(thresh, blackAndWhiteImage) = cv2.threshold(grayImage, threshold, 255, cv2.THRESH_BINARY)
+
+        blackAndWhiteImage = grayImage
+
 
         if black_and_white:
             img = rotate_image(blackAndWhiteImage, angle)
+            #img = blackAndWhiteImage
+
+
 
             # norm_img = np.zeros((img.shape[0], img.shape[1]))
             # img = cv2.normalize(img, norm_img, 0, 255, cv2.NORM_MINMAX)
@@ -62,10 +72,10 @@ def analyze_frame(frame, angle=0):
 
 
             #img = cv2.bilateralFilter(img, 15*2, 75, 2*75)
-            img = cv2.medianBlur(img, 1)
+            #img = cv2.medianBlur(img, 1)
 
             # cv2.imwrite("test_images/test.png", img)
-            img = cv2.imread("test_images/entire.png")
+            #img = cv2.imread("test_images/entire.png")
             #img = rotate_image_crop(img, -10)
 
             cv2.imshow('BlackAndWhite', img)
@@ -81,14 +91,16 @@ def analyze_frame(frame, angle=0):
 
 
         else:
-            img = rotate_image(grayImage, angle)
-            cv2.imshow('Gray', img)
+            #img = rotate_image(grayImage, angle)
+            img = grayImage
+
+            #cv2.imshow('Gray', img)
             text = pytesseract.image_to_string(img)
 
             print(text)
         
     else:
-
+        
         img = frame
 
         #img = cv2.bilateralFilter(img, 15, 75, 75)
