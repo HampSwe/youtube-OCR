@@ -28,9 +28,9 @@ def main():
 
     channel_URL = "https://www.youtube.com/channel/UCt-PBc48GgrNP57gZLMXtuw" # min kanal
 
-    latest_video_url = upload_event.check_upload_event(channel_URL)
+    latest_video_url = upload_event.check_upload_event(channel_URL, pause=1)
 
-    
+
 
 
 if __name__ == "__main__":

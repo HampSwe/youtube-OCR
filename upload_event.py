@@ -1,3 +1,4 @@
+from random import random
 from pytube import YouTube
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,7 +15,7 @@ import send_call
 
 # Väntar tills 'channel' (i form av en URL till kananels startsida) har lagt upp en ny video
 # och returnerar URL:en till den senaste videon
-def check_upload_event(channel):
+def check_upload_event(channel, pause=0):
     chrome_driver_path = "C:\\Users\\Hampus\\Documents\\chromedriver_103\\chromedriver.exe"
     accept_cookies_xpath = '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button'
     
@@ -66,6 +67,11 @@ def check_upload_event(channel):
             return latest_video_url
 
         print(latest_video_name)
+
+        if pause != 0:
+            time.sleep(pause)
+            time.sleep(random.random())
+
         time_diff = str(round(time.time() - last, 2))
         last = time.time()
 
