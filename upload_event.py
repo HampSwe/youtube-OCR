@@ -8,9 +8,6 @@ import time
 import send_call
 
 
-chrome_driver_path = "C:\\Users\\Hampus\\Documents\\chromedriver_103\\chromedriver.exe"
-accept_cookies_xpath = '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button'
-
 
 # Kolla specifikt try-not-to-laugh? Nja, vet ändå inte om den handlar om pengar... men kanske kan starta om manuellt annars
 
@@ -18,6 +15,8 @@ accept_cookies_xpath = '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]
 # Väntar tills 'channel' (i form av en URL till kananels startsida) har lagt upp en ny video
 # och returnerar URL:en till den senaste videon
 def check_upload_event(channel):
+    chrome_driver_path = "C:\\Users\\Hampus\\Documents\\chromedriver_103\\chromedriver.exe"
+    accept_cookies_xpath = '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button'
     
     chrome_options = Options()
     chrome_options.headless = False
