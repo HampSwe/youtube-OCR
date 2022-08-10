@@ -21,17 +21,25 @@ def play_video_sound():
 
 
 def main():
-    workers = {"Hampus": "+46708792939", "Jonte": "+46724499546"}
+    #workers = {"Hampus": "+46708792939", "Jonte": "+46724499546"}
+    workers = {"Hampus": "+46708792939"}
 
     channel_URL = "https://www.youtube.com/channel/UCt-PBc48GgrNP57gZLMXtuw" # min kanal
 
     #latest_video_url = upload_event.check_upload_event(channel_URL, pause=3)
+    latest_video_url = "www.google.com"
 
-    msg = "Hej schonne \n whats up"
+    msg = "NEW KSI VIDEO\n\n" + latest_video_url
 
     for name, number in workers.items():
         twilio_funcs.text(msg, number=number)
         print("Sent text message to " + name)
+
+    
+
+
+
+
 
 
     #play_video_sound()
