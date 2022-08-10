@@ -1,3 +1,4 @@
+from numpy import number
 import twilio_funcs
 import program as youtube_funcs
 import upload_event
@@ -20,15 +21,22 @@ def play_video_sound():
 
 
 def main():
-    #play_video_sound()
-
-    #twilio_funcs.text("Hejsan")
-
-    #twilio_funcs.call()
+    workers = {"Hampus": "+46708792939", "Jonte": "+46724499546"}
 
     channel_URL = "https://www.youtube.com/channel/UCt-PBc48GgrNP57gZLMXtuw" # min kanal
 
-    latest_video_url = upload_event.check_upload_event(channel_URL, pause=1)
+    #latest_video_url = upload_event.check_upload_event(channel_URL, pause=3)
+
+    msg = "Hej schonne \n whats up"
+
+    for name, number in workers.items():
+        twilio_funcs.text(msg, number=number)
+        print("Sent text message to " + name)
+
+
+    #play_video_sound()
+    #twilio_funcs.text("Hejsan")
+    #twilio_funcs.call()
 
 
 

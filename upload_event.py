@@ -1,4 +1,4 @@
-from random import random
+import random
 from pytube import YouTube
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -26,7 +26,7 @@ def check_upload_event(channel, pause=0):
 
     driver.get(channel)
 
-    time.sleep(30)
+    time.sleep(15)
 
     accept_cookies = driver.find_element(By.XPATH, accept_cookies_xpath)
     accept_cookies.click()
