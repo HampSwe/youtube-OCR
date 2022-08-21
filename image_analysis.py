@@ -65,8 +65,6 @@ def analyze_frame(frame, angle=0):
             img = rotate_image(blackAndWhiteImage, angle)
             #img = blackAndWhiteImage
 
-
-
             # norm_img = np.zeros((img.shape[0], img.shape[1]))
             # img = cv2.normalize(img, norm_img, 0, 255, cv2.NORM_MINMAX)
             # img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
@@ -85,7 +83,6 @@ def analyze_frame(frame, angle=0):
 
             print(text)
 
-
             # Rotera texten rätt! https://pyimagesearch.com/2022/01/31/correcting-text-orientation-with-tesseract-and-python/
             
             # Prova och träna på rotated2.png, se om du kan få den att funka med filtrering
@@ -98,7 +95,6 @@ def analyze_frame(frame, angle=0):
             text = pytesseract.image_to_string(img)
 
             print(text)
-        
     else:
         
         img = frame
@@ -121,6 +117,7 @@ def analyze_frame(frame, angle=0):
 
 def main():
     pass
+  
 
 if __name__ == "__main__":
     main()
