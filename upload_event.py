@@ -10,8 +10,6 @@ import send_call
 
 
 
-# Kolla specifikt try-not-to-laugh? Nja, vet ändå inte om den handlar om pengar... men kanske kan starta om manuellt annars
-
 
 # Väntar tills 'channel' (i form av en URL till kananels startsida) har lagt upp en ny video
 # och returnerar URL:en till den senaste videon
