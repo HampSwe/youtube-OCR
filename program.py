@@ -140,11 +140,8 @@ def analyze_codes(path):
                 # # Press N on keyboard to go to next frame
                 # while not ((cv2.waitKey(12) & 0xFF == ord('n'))):
                 #     pass
-
-                
+  
                 input()
-
-
 
     cap.release()
     cv2.destroyAllWindows()
@@ -342,13 +339,7 @@ def filter_name(name):
 
 def main():
 
-    url_650 = "https://www.youtube.com/watch?v=NBXcEO6t2Ok" #vriden text + stjärna. vit text
-    url_500 = "https://www.youtube.com/watch?v=WxHRKCgCtDM" #svart text, enkel
-    url_400 = "https://www.youtube.com/watch?v=Brje__8Xvmk&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=5" #svart text, enkel
-    url_broke = "https://www.youtube.com/watch?v=fNQe3ClfujU&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=9" #vit text, enkel
-    url_300 = "https://www.youtube.com/watch?v=BeJ1rnFJHfI&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=11" #typ omöjliga att läsa av. DOCK: konstig bugg, kan ej ladda ner. tror svart text
-    url_smile = "https://www.youtube.com/watch?v=4_TyhOeTWyQ&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=14" #claim code först
-    url_first = "https://www.youtube.com/watch?v=L69Wt-5d8rE&list=PL6_iWvoCGAJm--GrgiAHz7H6oLQ0LM8dE&index=16" #claim code först
+    url_650 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
     url = url_650
     folder = "./videos"
@@ -358,8 +349,7 @@ def main():
     video_name = download_yt_video(url, folder, resolution, file_format)
     video_name = filter_name(video_name)
 
-    #video_name = "I LAUGHED WAY TOO MUCH"
-    #video_name = "500 EVERYTIME I LAUGH"
+    #video_name = "test"
 
     video_path = folder + "/" + video_name + "." + file_format
 
