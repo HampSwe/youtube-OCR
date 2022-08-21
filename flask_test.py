@@ -6,8 +6,6 @@ from markupsafe import escape
 # https://www.digitalocean.com/community/tutorial_series/how-to-build-a-website-with-html
 
 
-
-
 app = Flask(__name__)
 
 @app.route("/")
