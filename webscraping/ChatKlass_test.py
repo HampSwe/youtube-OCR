@@ -3,8 +3,8 @@ from lxml import html
 import time
 
 
-username = "012213"
-password = ""
+username = input("User: ")
+password = input("Password: ")
 
 
 
