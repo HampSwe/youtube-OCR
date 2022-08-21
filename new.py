@@ -6,7 +6,7 @@ import upload_event
 
 def play_video_sound():
 
-    url = "https://www.youtube.com/watch?v=NBXcEO6t2Ok"
+    url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
     folder = "./videos"
     resolution = "1080p"
