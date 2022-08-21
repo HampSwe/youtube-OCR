@@ -36,7 +36,6 @@ def rotate_image(mat, angle):
     return rotated_mat
 
 
-
 def analyze_frame(frame, angle=0):
 
     # att visa bild funkar typ bara om man också "pausar" med bokstaven "n" (typ)
@@ -91,8 +90,6 @@ def analyze_frame(frame, angle=0):
             
             # Prova och träna på rotated2.png, se om du kan få den att funka med filtrering
 
-
-
         else:
             img = rotate_image(grayImage, angle)
             #img = grayImage
@@ -124,7 +121,6 @@ def analyze_frame(frame, angle=0):
 
 def main():
     pass
-
 
 if __name__ == "__main__":
     main()
