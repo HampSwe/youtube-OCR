@@ -10,4 +10,5 @@ cv2.waitKey(0)
 
 newdata = pytesseract.image_to_osd(imPath)
 
+print("Test")
 print(newdata)
